@@ -28,7 +28,7 @@ let allowedRoles = JSON.parse(raw);
 
     let startMessage = new Discord.RichEmbed()
         .setTitle("Native Scrims")
-        .setDescription("Please write the last 3 digits from your server id")
+        .setDescription("Please write the last 3 digits from your server ID")
         .setColor("#c37d75")
         .setFooter("repd");
 
