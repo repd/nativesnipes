@@ -1,10 +1,14 @@
-
+const Discord = require('discord.js');
 
 module.exports.run = async (bot,message,args) => {
 
-    message.channel.send("@here Next scrim beginning now!");
+    let startMessage = new Discord.RichEmbed()
+        .setTitle("Native Scrims")
+        .setDescription("Match starting now!")
+        .setColor("#c37d75")
+        .setFooter("repd");
 
-
+        message.channel.send({embed: startMessage});
 
 }
 
