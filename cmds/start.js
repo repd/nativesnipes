@@ -29,7 +29,7 @@ let allowedRoles = JSON.parse(raw);
     let startMessage = new Discord.RichEmbed()
         .setTitle("Native Scrims")
         .setDescription("Please write the last 3 digits from your server id")
-        .setColor("#8600b3")
+        .setColor("#c37d75")
         .setFooter("repd");
 
     message.channel.send({embed: startMessage});
@@ -40,7 +40,7 @@ let allowedRoles = JSON.parse(raw);
     let timeEmbed = new Discord.RichEmbed()
         .setTitle("Next match in approx...")
         .setDescription(time + " minutes")
-        .setColor("#8600b3");
+        .setColor("#c37d75");
 
     setTimeout(async () => {
         editTime = await message.channel.send({embed: timeEmbed}).catch( (err) => {
@@ -67,7 +67,7 @@ let allowedRoles = JSON.parse(raw);
 
     let last3 = new Discord.RichEmbed()
         .setTitle("Last 3 digits")
-        .setColor("#8600b3");
+        .setColor("#c37d75");
 
     setTimeout(async () => {
         editLast3 = await message.channel.send({embed: last3});
@@ -108,7 +108,7 @@ let allowedRoles = JSON.parse(raw);
         let str = "";
         last3 = new Discord.RichEmbed()
             .setTitle("Last 3 digits")
-            .setColor("#8600b3");
+            .setColor("#c37d75");
 
         for (var i = 0; i < game.data.length; i++){
             str = "";
