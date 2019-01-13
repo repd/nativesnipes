@@ -1,4 +1,4 @@
-const Entry = require('./Entry')
+const Entry = require('./Entry');
 
 class Listing {
 
@@ -15,7 +15,7 @@ class Listing {
         console.log("userPresent called");
 
         if (this.users.length > 0){
-            for (var i =0; i < this.users.length; i++){
+            for (var i = 0; i < this.users.length; i++){
                 if (this.users[i] === username){
                     return true;
                 }
@@ -23,6 +23,7 @@ class Listing {
         }
         return false;
     }
+
     // Check to see if id is present
     idPresent(id){
         console.log("idPresent called");
@@ -37,7 +38,7 @@ class Listing {
         return false;
     }
 
-    // New user
+    // new user
     addUser(id,username){
         console.log("addUser called");
 
@@ -45,6 +46,7 @@ class Listing {
             if (this.data[i].id === id){
                 this.data[i].users.push(username);
                 this.users.push(username);
+                console.log("New User: " +username);
                 return;
             }
         }
@@ -53,8 +55,9 @@ class Listing {
     // New id
     addID(id, username){
         console.log("newID called");
-        this.data.push(new Entry(id, username));
+        this.data.push(new Entry(id,username));
         this.users.push(username);
+        console.log("NEW ID: " + id +" | " + username);
     }
 
     // Find and delete username from users array
@@ -73,13 +76,12 @@ class Listing {
     }
 
 
-
-    // Deletes user and id's
+    // Deletes users and id's
     deleteUserEntry(username){
         console.log("deleteUserEntry called");
-
+        
         if (this.data.length > 0 && this.users.length > 0){
-            // Delete the entry when only one id and username is found
+            //Delete the entry when only one id and username is found
             if (this.data.length === 1 && this.data[0].users.length === 1 && this.data[0].users[0] === username){
                 this.data.pop();
                 this.users.pop();
@@ -102,7 +104,7 @@ class Listing {
                                 this.data[0] = tmp2;
 
                                 let deletedID = this.data.shift();
-                                console.log(`deleted id : ${deletedID}`)
+                                console.log(`deleted id : ${deletedID}`);
                                 this.deleteUser(username);
                                 return;
                             }
@@ -113,15 +115,16 @@ class Listing {
             }
         }
     }
-    // Sorts entry with most users
+    // sorts Entry with most users
     sort() {
-        if (this.data.length >= 2)
-        for (var i = 0; i < this.data.length - 1; i++){
-            for (var j = i + 1; j < this.data.length; j++){
-                if (this.data[i].users.length < this.data[j].users.length){
-                    let tmp = this.data[i];
-                    this.data[i] = this.data[j];
-                    this.data[j] = tmp
+        if (this.data.length >= 2){
+            for (var i = 0; i < this.data.length - 1; i++){
+                for (var j = i + 1; j < this.data.length; j++){
+                    if (this.data[i].users.length < this.data[j].users.length){
+                        let tmp = this.data[i];
+                        this.data[i] = this.data[j];
+                        this.data[j] = tmp;
+                    }
                 }
             }
         }
@@ -129,7 +132,6 @@ class Listing {
 
 
 }
-
 
 
 
