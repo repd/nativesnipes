@@ -2,15 +2,14 @@ const Discord = require('discord.js');
 const Listing = require('./../modules/Listing');
 const fs = require('fs');
 
-
 module.exports.run = async (bot, message, args) => {
     let snipeChannel = message.channel;
     const filter = m => !m.author.bot;
     let game = new Listing();
 
-
+    
     let raw = fs.readFileSync('./roles.json');
-let allowedRoles = JSON.parse(raw);
+    let allowedRoles = JSON.parse(raw);
 
     let validation = function(serverRoles, userRoles){
         let val = false;
@@ -23,6 +22,7 @@ let allowedRoles = JSON.parse(raw);
         });
         return val;
     }
+    
 
     let editLast3 = null;
 
@@ -76,14 +76,17 @@ let allowedRoles = JSON.parse(raw);
     const collector = snipeChannel.createMessageCollector(filter, {max: 200, maxMatches: 200, time: 180000});
 
     collector.on('collect', m => {
-        console.log(`Collected ${m.content} | ${m.author.username}`);
 
+        console.log(`Collected ${m.content} | ${m.author.username}`);
+        
         if (validation(allowedRoles.roles,m.member.roles.array())){
-            if (m.content === "!start"){
+            if (m.content === "!start" || m.content === "!stop"){
                 collector.stop();
-                console.log("Collector stopped");
+                console.log("Collector stoped");
+                return;
             }
-        }    
+        }
+        
         if (game.data.length === 0 && m.content.length === 3){
             game.addID(m.content.toUpperCase(), m.author.username);
         }else if (m.content.length === 3){
@@ -92,11 +95,11 @@ let allowedRoles = JSON.parse(raw);
                 if (game.idPresent(m.content.toUpperCase())){
                     game.addUser(m.content.toUpperCase(), m.author.username);
                 }else {
-                    game.addID(m.content.toUpperCase(), m.author.username);
+                    game.addID(m.content.toUpperCase(),m.author.username);
                 }
             } else {
                 if (game.idPresent(m.content.toUpperCase())){
-                    game.addUser(message.content.toUpperCase(), message.author.username);
+                    game.addUser(m.content.toUpperCase(), m.author.username);
                 }else {
                     game.addID(m.content.toUpperCase(), m.author.username);
                 }
@@ -117,15 +120,14 @@ let allowedRoles = JSON.parse(raw);
             }
             last3.addField(`${game.data[i].id.toUpperCase()} - ${game.data[i].users.length} PLAYERS`, str, true);
         }
-
-        editLast3.edit({embed: last3}).catch((err) => {
-            console.log("Caught edit error");
-        });
+            editLast3.edit({embed: last3}).catch((err) => {
+                console.log("Caught edit error");
+            });
 
         if (m.deletable){
             m.delete().catch((err) => {
-                console.log("Can't delete")
-                console.log (err);
+                console.log("Can't delete");
+                console.log(err);
             });
         }
 
@@ -133,8 +135,14 @@ let allowedRoles = JSON.parse(raw);
 
     collector.on('end', collected => {
         console.log(`Collected ${collected.size} items`);
-    });
+        let endEmbed = new Discord.RichEmbed()
+        .setTitle("No more codes are accepted at this point")
+        .setDescription("Good luck in you game and have fun!")
+        .setColor("#c37d75");
 
+        message.channel.send({embed: endEmbed});
+    });
+        
 
 }
 
