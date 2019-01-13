@@ -6,7 +6,7 @@ module.exports.run = async (bot,message,args) => {
         .setTitle("Native Scrims")
         .setDescription("Match starting now!")
         .setColor("#c37d75")
-        .setFooter("repd");
+        .setFooter("Announced by " + message.author.username);
 
         message.channel.send({embed: startMessage});
 
