@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
         .setTitle("Native Scrims")
         .setDescription("Please write the last 3 digits from your server ID")
         .setColor("#c37d75")
-        .setFooter("repd");
+        .setFooter("Announced by " + message.author.username);
 
     message.channel.send({embed: startMessage});
 
