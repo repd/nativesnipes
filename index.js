@@ -36,6 +36,7 @@ fs.readdir('./cmds', (err,files) => {
         bot.commands.set(props.help.name, props);
     })
 })
+bot.user.setGame('Scrims!')
 
 let raw = fs.readFileSync('./roles.json');
 let allowedRoles = JSON.parse(raw);
