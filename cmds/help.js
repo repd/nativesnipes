@@ -8,7 +8,7 @@ module.exports.run = async (bot,message,args) => {
         .addField("!start",
         "Starts a scrim.")
         .addField("!stop",
-        "Stops the scrim.")
+        "Stops a scrim.")
         .addField("!300s",
         "Announces that the next scrim is in 300s.")
         .addField("!60s",
