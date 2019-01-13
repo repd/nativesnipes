@@ -66,7 +66,7 @@ module.exports.run = async (bot, message, args) => {
     },60000);
 
     let last3 = new Discord.RichEmbed()
-        .setTitle("Last 3 digits")
+        .setTitle("Last 3 digits of your server ID")
         .setColor("#c37d75");
 
     setTimeout(async () => {
@@ -136,8 +136,8 @@ module.exports.run = async (bot, message, args) => {
     collector.on('end', collected => {
         console.log(`Collected ${collected.size} items`);
         let endEmbed = new Discord.RichEmbed()
-        .setTitle("No more codes are accepted at this point")
-        .setDescription("Good luck in you game and have fun!")
+        .setTitle("No more codes are accepted at this point.")
+        .setDescription("Good luck in your game!")
         .setColor("#c37d75");
 
         message.channel.send({embed: endEmbed});
