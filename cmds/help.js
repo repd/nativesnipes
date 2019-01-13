@@ -7,6 +7,8 @@ module.exports.run = async (bot,message,args) => {
         .setDescription("The commands are:")
         .addField("!start",
         "Starts a scrim.")
+        .addField("!stop",
+        "Stops the scrim.")
         .addField("!300s",
         "Announces that the next scrim is in 300s.")
         .addField("!60s",
