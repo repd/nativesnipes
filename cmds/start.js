@@ -29,8 +29,9 @@ module.exports.run = async (bot, message, args) => {
     let startMessage = new Discord.RichEmbed()
         .setTitle("Native Scrims")
         .setDescription("Please write the last 3 digits from your server ID")
+        . .addField("Host: ",
+        message.author.username)
         .setColor("#c37d75")
-        .setFooter("Announced by " + message.author.username);
 
     message.channel.send({embed: startMessage});
 
