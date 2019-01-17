@@ -28,8 +28,8 @@ module.exports.run = async (bot, message, args) => {
 
     let startMessage = new Discord.RichEmbed()
         .setTitle("Native Scrims")
-        .addField("Instructions",
-        "- Put your last three digits of your top left code in.")
+        .addField("Instructions:",
+        "- Put the last three digits of your top left code in.")
         .addField("Host: ",
         message.author.username)
         .setColor("#c37d75")
