@@ -28,7 +28,8 @@ module.exports.run = async (bot, message, args) => {
 
     let startMessage = new Discord.RichEmbed()
         .setTitle("Native Scrims")
-        .setDescription("Please write the last 3 digits from your server ID")
+        .addField("Instructions",
+        "- Put your last three digits of your top left code in.")
         .addField("Host: ",
         message.author.username)
         .setColor("#c37d75")
@@ -67,7 +68,7 @@ module.exports.run = async (bot, message, args) => {
     },60000);
 
     let last3 = new Discord.RichEmbed()
-        .setTitle("Last 3 digits of your server ID")
+        .setTitle("Match codes:")
         .setColor("#c37d75");
 
     setTimeout(async () => {
@@ -111,7 +112,7 @@ module.exports.run = async (bot, message, args) => {
 
         let str = "";
         last3 = new Discord.RichEmbed()
-            .setTitle("Last 3 digits")
+            .setTitle("Match codes:")
             .setColor("#c37d75");
 
         for (var i = 0; i < game.data.length; i++){
