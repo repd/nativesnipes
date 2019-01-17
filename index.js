@@ -56,7 +56,7 @@ let validation = function(serverRoles, userRoles){
 
 
 bot.on('ready', async () => {
-    console.log("Hello, I'm all set!");
+    console.log("Ready.");
 
 });
 
