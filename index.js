@@ -23,6 +23,7 @@ fs.readdir('./cmds', (err,files) => {
         console.log(err);
     }
 
+    client.user.setActivity(`Playing on ${client.guilds.size} servers`);
     let cmdFiles = files.filter(f => f.split(".").pop() === "js");
 
     if (cmdFiles.length === 0){
@@ -77,7 +78,7 @@ bot.on("message", msg => {
                     cmd.run(bot,msg,args);
                 }
         } else {
-            msg.channel.send("You don't have access to this command!");
+            msg.channel.sendMessage("You don't have access to this command!");
         }
 }
 
