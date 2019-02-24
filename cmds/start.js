@@ -22,16 +22,21 @@ module.exports.run = async (bot, message, args) => {
         });
         return val;
     }
-    
+    let gamemode = "SOLO";
+    if(args.length === 1){
+        if (args[0].toUpperCase() === "SOLO" || args[0].toUpperCase() === "DUOS" || args[0].toUpperCase() === "SQUADS"){
+            gamemode = args[0];
+        }
+    }
 
     let editLast3 = null;
 
     let startMessage = new Discord.RichEmbed()
         .setTitle("Native Scrims")
-        .addField("Instructions:",
-        "- Put the last three digits of your top left code in.")
+        .setDescription("Please write the last 3 digits from your server ID")
         .addField("Host: ",
         message.author.username)
+        .addField("Gamemode: ", gamemode,true)
         .setColor("#c37d75")
 
     message.channel.send({embed: startMessage});
@@ -40,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
     let editTime = "";
 
     let timeEmbed = new Discord.RichEmbed()
-        .setTitle("Next match in approximately")
+        .setTitle("Next match in approx...")
         .setDescription(time + " minutes")
         .setColor("#c37d75");
 
@@ -68,7 +73,7 @@ module.exports.run = async (bot, message, args) => {
     },60000);
 
     let last3 = new Discord.RichEmbed()
-        .setTitle("Match codes:")
+        .setTitle("Last 3 digits of your server ID")
         .setColor("#c37d75");
 
     setTimeout(async () => {
