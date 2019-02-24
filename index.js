@@ -23,7 +23,6 @@ fs.readdir('./cmds', (err,files) => {
         console.log(err);
     }
 
-    client.user.setActivity(`Playing on ${client.guilds.size} servers`);
     let cmdFiles = files.filter(f => f.split(".").pop() === "js");
 
     if (cmdFiles.length === 0){
