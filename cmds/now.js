@@ -7,6 +7,7 @@ module.exports.run = async (bot,message,args) => {
         .setDescription("Match starting now!")
         .setColor("#c37d75")
         .setFooter("Announced by " + message.author.username);
+    startMessage.setTimestamp()
 
         message.channel.send({embed: startMessage});
 
