@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
     let editTime = "";
 
     let timeEmbed = new Discord.RichEmbed()
-        .setTitle("Next match in approx...")
+        .setTitle("Next match in approximately")
         .setDescription(time + " minutes")
         .setColor("#c37d75");
 
